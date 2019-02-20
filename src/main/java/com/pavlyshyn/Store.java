@@ -10,7 +10,7 @@ public class Store {
     private Map<String, Integer> productPrice;
     private Calculator calculator;
 
-    public Store(String name, Integer id, Map<String, Integer> productPrice,Calculator calculator) {
+    public Store(String name, Integer id, Map<String, Integer> productPrice, Calculator calculator) {
         this.name = name;
         this.id = id;
         this.productPrice = productPrice;
@@ -24,8 +24,9 @@ public class Store {
     }
 
     public Store(String name, Integer id) {
-        this(name,id,new HashMap<>());
+        this(name, id, new HashMap<>());
     }
+
     public String getName() {
         return name;
     }
@@ -38,22 +39,27 @@ public class Store {
     public Map<String, Integer> getProductPrice() {
         return productPrice;
     }
-    public void put(String name, int price){
-        if(name.equals(this.name)){
+
+    public void put(String name, int price) {
+        if (name.equals(this.name)) {
             throw new RuntimeException("Can't store be product");
         }
-        productPrice.put(name,price);
+        productPrice.put(name, price);
     }
-    public void remove(String name){
+
+    public void remove(String name) {
         productPrice.remove(name);
     }
-    public void removeAll(){
+
+    public void removeAll() {
         productPrice.clear();
     }
-    public Integer findProductPrice(String productName){
+
+    public Integer findProductPrice(String productName) {
         return productPrice.get(productName);
     }
-    public int getNumberOfProducts(){
+
+    public int getNumberOfProducts() {
         return productPrice.size();
     }
 
@@ -65,7 +71,7 @@ public class Store {
         this.name = name;
     }
 
-    public int calculatePrice(String name, int count){
-        return calculator.calculatePrice(count,productPrice.get(name));
+    public int calculatePrice(String name, int count) {
+        return calculator.calculatePrice(count, productPrice.get(name));
     }
 }

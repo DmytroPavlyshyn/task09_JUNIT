@@ -1,8 +1,11 @@
 package com.pavlyshyn;
 
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.*;
-import org.mockito.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -69,5 +72,6 @@ public class StoreTest {
     void testCalculatePrice() {
         doReturn(40).when(calculator).calculatePrice(4, 10);
         store.calculatePrice("Milk", 4);
+        verify(calculator,atLeast(1)).calculatePrice(4,10);
     }
 }
